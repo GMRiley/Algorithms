@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func BenchmarkCustomarks(b *testing.B) {
+func BenchmarkThousandInts(b *testing.B) {
 	benchmarksFormula := []struct {
 		name  string
 		value int
