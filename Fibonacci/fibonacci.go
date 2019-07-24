@@ -34,5 +34,5 @@ func fibLoop(max int) int {
 
 // * It is constant: O(1)
 func fibCalc(max float64) float64 {
-	return (((1.618034) * math.Exp(max)) - ((-0.618034) * math.Exp(max))) / math.Sqrt(5)
+	return math.Floor(((math.Pow((1.618034), max) - math.Pow((-0.618034), max)) / 2.236067977))
 }
