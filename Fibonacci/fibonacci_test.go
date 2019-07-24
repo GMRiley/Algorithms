@@ -1,8 +1,8 @@
 package main
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func BenchmarkFibonacci(b *testing.B) {
@@ -11,28 +11,27 @@ func BenchmarkFibonacci(b *testing.B) {
 		value int
 	}{
 		{"Five", 5},
-		{"Ten", 10},
+		{"TwentyFive", 25},
 		{"Fifty", 50},
 	}
-	fmt.println("Loop Results")
-	for _, bmF := range benchmarkFib{
-		b.Run(bmF.name, func(b *testing.B) {
+	for _, bmF := range benchmarkFib {
+		b.Run(bmF.name+"Loop", func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				fibLoop(bmF.value)
 			}
 		})
 	}
-	fmt.println("Calculation Results")
+	fmt.Println("")
 	for _, bmF := range benchmarkFib {
-		b.Run(bmF.name, func(b *testing.B) {
+		b.Run(bmF.name+"Calc", func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				fibCalc(float64(bmF.value))
 			}
 		})
 	}
-	fmt.println("Recursion Results")
-	for _, bmF := range benchmarkFib{
-		b.Run(bmF.name, func(b *testing.B) {
+	fmt.Println("")
+	for _, bmF := range benchmarkFib {
+		b.Run(bmF.name+"Recurs", func(b *testing.B) {
 			for i := 0; i < b.N; i++ {
 				fibRecurs(bmF.value)
 			}
