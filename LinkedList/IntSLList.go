@@ -109,13 +109,30 @@ func (p *IntSLList) min() int {
 	return min
 }
 func (p *IntSLList) removeDuplicates() {
-	/*
-		for tmp := p.head; tmp != nil; tmp = tmp.next {
-			for tmp2 := tmp; tmp2.next != nil; tmp2 = tmp2.next {
-				if tmp2.info == tmp.next.info {
-					p.delete(tmp2.info)
-				}
-			}
+	pred, curr := p.head, p.head
+	integers := make(map[int]bool)
+
+	for curr != nil {
+		var curVal = curr.info
+		if integers[curVal] {
+			pred.next = curr.next
+		} else {
+			integers[curr.info] = true
+			pred = curr
 		}
-	*/
+		curr = curr.next
+	}
+}
+func (p *IntSLList) removeMedian() {
+	count := 0
+	for tmp := p.head; tmp != nil; tmp = tmp.next {
+		count++
+	}
+	count = count / 2
+	tmpTwo := p.head
+	for counter := 0; counter < count; counter++ {
+		tmpTwo = tmpTwo.next
+	}
+	val := tmpTwo.info
+	p.delete(val)
 }
