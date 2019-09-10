@@ -15,6 +15,15 @@ func simple(key string) int {
 	return sum
 }
 
+func hashRoutine(keyToSearch string) int {
+	var sum = 0
+	for _, subSc := range keyToSearch {
+		var decVal = keyToSearch[subSc]
+		sum += decVal
+	}
+	return sum
+}
+
 func main() {
 	var index = simple("1007")
 	fmt.Printf("Index number generated from key = %v \n", index)
