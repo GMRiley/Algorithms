@@ -19,7 +19,7 @@ func hashRoutine(keyToSearch string) int {
 	var sum = 0
 	for _, subSc := range keyToSearch {
 		var decVal = keyToSearch[subSc]
-		sum += decVal
+		sum += int(decVal)
 	}
 	return sum
 }
