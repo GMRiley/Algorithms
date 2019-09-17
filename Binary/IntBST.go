@@ -81,12 +81,15 @@ func (p *IntBST) search(el int) *IntBSTNode {
 	}
 	return nil
 }
-func (p *IntBST) DFS(el int) {
-	fmt.Print("Depth First Traversal: ")
-	var traversal = func(n *IntBSTNode) {
-		if n == nil {
-			return
+func (t *IntBST) DFS(el int, n *IntBSTNode) *IntBSTNode {
+	if n == nil {
+		return nil
+	} else if n.key == el {
+		return n
+	} else {
+		if n := t.DFS(el, n.left); n != nil {
+			return n
 		}
-
+		return t.DFS(el, n.right)
 	}
 }

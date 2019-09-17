@@ -17,4 +17,5 @@ func main() {
 	myTree.recursInsert(29)
 	fmt.Println(myTree.search(13))
 	print(os.Stdout, myTree.root, 0, 'M')
+	fmt.Println(myTree.DFS(13, myTree.root))
 }
